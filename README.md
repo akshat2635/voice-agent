@@ -107,7 +107,7 @@ python agent.py download-files
 python agent.py console
 ```
 ### Connect to LiveKit playground
-    Start your agent in dev mode to connect it to LiveKit and make it available from anywhere on the internet
+Start your agent in dev mode to connect it to LiveKit and make it available from anywhere on the internet
 
 ```bash
 python agent.py dev
