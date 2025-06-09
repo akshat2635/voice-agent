@@ -42,7 +42,6 @@ async def entrypoint(ctx: agents.JobContext):
 
     @session.on("user_state_changed")
     def on_user_state_changed(ev: UserStateChangedEvent):
-        global current_metrics
         if ev.new_state == "speaking":
             print("User started speaking")
         elif ev.new_state == "listening":
@@ -52,6 +51,7 @@ async def entrypoint(ctx: agents.JobContext):
 
     @session.on("agent_state_changed")
     def on_agent_state_changed(ev: AgentStateChangedEvent):
+        global current_metrics
         if ev.new_state == "initializing":
             print("Agent is starting up")
         elif ev.new_state == "idle":
@@ -89,6 +89,7 @@ async def entrypoint(ctx: agents.JobContext):
                 print(f"  ↳ TTFB: {ev.metrics.ttfb:.3f}s")
 
     async def on_shutdown():
+        global current_metrics
         if current_metrics:
             print("Logging final metrics at shutdown:", current_metrics)
             log_metric(

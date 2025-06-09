@@ -21,5 +21,14 @@ def save_to_excel():
         os.makedirs(metrics_folder)
     
     df = pd.DataFrame(metrics)
+    
+    if not df.empty:
+        # Compute mean of all numeric columns
+        avg_row = df.mean(numeric_only=True)
+        avg_row["Timestamp"] = "Average"
+        
+        # Append average row
+        df.loc[len(df)] = avg_row
+
     file_path = os.path.join(metrics_folder, f"session_metrics{id}.xlsx")
     df.to_excel(file_path, index=False)

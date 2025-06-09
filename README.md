@@ -15,6 +15,19 @@ A real-time voice AI assistant built with LiveKit that provides conversational A
   - Multilingual turn detection
 - **Performance Monitoring**: Comprehensive metrics collection and Excel export
 - **State Management**: Real-time tracking of user and agent states
+- **Interrupt Handling**: Seamless user interruption support for natural conversations
+
+## 🎤 Interrupt Handling
+
+The voice agent supports natural conversation flow with intelligent interrupt handling:
+
+- **Real-time Detection**: Uses Silero VAD to detect when user starts speaking
+- **Graceful Interruption**: Automatically stops agent speech when user interrupts
+- **Context Preservation**: Maintains conversation context across interruptions
+- **Low-latency Response**: Quick detection and response to user voice activity
+- **Natural Flow**: Enables back-and-forth conversation without waiting for agent to finish
+
+This ensures conversations feel natural and responsive, similar to human-to-human interactions.
 
 ## 📊 Metrics Tracked
 
@@ -83,10 +96,21 @@ All metrics are automatically saved to Excel files with timestamps for analysis.
 
 ## 🎯 Usage
 
-### Running the Voice Agent
+### Download model files 
 
 ```bash
-python agent.py
+python agent.py download-files
+```
+### Running the Voice Agent on console
+
+```bash
+python agent.py console
+```
+### Connect to LiveKit playground
+    Start your agent in dev mode to connect it to LiveKit and make it available from anywhere on the internet
+
+```bash
+python agent.py dev
 ```
 
 The agent will:
@@ -111,8 +135,7 @@ voice-agent/
 ├── .env                  # Environment variables (create this)
 ├── README.md             # This file
 ├── metrics/              # Generated metrics Excel files
-└── KMS/                  # Knowledge Management System (optional)
-    └── logs/             # Log files
+
 ```
 
 ## 🔧 Configuration
